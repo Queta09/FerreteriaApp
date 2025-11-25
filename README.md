@@ -31,31 +31,25 @@ Centraliza y mantiene actualizada la base de datos de los proveedores.
 Automatización de la documentación de venta y procesos de cobro.
 * **Generación de Documentos:** Genera automáticamente **recibos o facturas** por cada venta.
 * **Cálculo Automático:** Calcula **impuestos, descuentos y totales** de forma automática.
-* **Métodos de Pago:** Permite registrar diferentes métodos de pago (**efectivo, tarjeta, transferencia**).
 
 ### 🏷️ 5. Descuentos y Promociones
 Incorpora flexibilidad para estrategias de precios y fidelización.
-* **Aplicación de Descuentos:** Permite aplicar descuentos a **productos específicos** o al **total de la compra**.
-* **Administración de Promociones:** Registra y administra promociones temporales.
 * **Visualización:** Muestra al cliente el **precio original** y el **precio final con descuento**.
 
 ### 🔍 6. Búsqueda y Consulta de Productos
 Herramientas de búsqueda rápida para localizar información de inventario.
-* **Búsqueda Múltiple:** Permite la búsqueda por **nombre, número de artículo o categoría**.
+* **Búsqueda Múltiple:** Permite la búsqueda por **nombre**.
 * **Detalle de Producto:** Muestra información detallada (precio, existencias, descripción y especificaciones técnicas).
-* **Filtros Avanzados:** Permite filtros por **disponibilidad, categoría o proveedor**.
 
 ### 📈 7. Generación de Reportes
 Facilita la toma de decisiones con informes automatizados.
 * **Informes de Ventas:** Genera informes de ventas **diarias, semanales, mensuales y anuales**.
 * **Reportes de Inventario:** Genera reportes de inventario actualizado.
-* **Filtros de Reporte:** Permite elaborar reportes por **categoría de producto o proveedor**.
 
 ### 👥 8. Registro de Clientes
 Base de datos para seguimiento y fidelización.
 * **Registro Completo:** Registra nombre, dirección, contacto e **historial de compras**.
 * **Mantenimiento de Datos:** Permite editar y eliminar información del cliente.
-* **Consulta Individual:** Permite consultar el **historial de compras individuales**.
 
 ---
 
