@@ -50,7 +50,6 @@ Facilita la toma de decisiones con informes automatizados.
 * **Informes de Ventas:** Genera informes de ventas **diarias, semanales, mensuales y anuales**.
 * **Reportes de Inventario:** Genera reportes de inventario actualizado.
 * **Filtros de Reporte:** Permite elaborar reportes por **categoría de producto o proveedor**.
-* **Exportación:** Permite exportar los reportes a formatos como **PDF o Excel**.
 
 ### 👥 8. Registro de Clientes
 Base de datos para seguimiento y fidelización.
