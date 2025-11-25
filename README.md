@@ -30,7 +30,7 @@ Centraliza y mantiene actualizada la base de datos de los proveedores.
 ### 🧾 4. Facturación y Cobro
 Automatización de la documentación de venta y procesos de cobro.
 * **Generación de Documentos:** Genera automáticamente **recibos o facturas** por cada venta.
-* **Cálculo Automático:** Calcula **impuestos, descuentos y totales** de forma automática.
+* **Cálculo Automático:** Calcula **, descuentos y totales** de forma automática.
 
 ### 🏷️ 5. Descuentos y Promociones
 Incorpora flexibilidad para estrategias de precios y fidelización.
