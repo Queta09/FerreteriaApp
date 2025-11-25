@@ -73,6 +73,25 @@ Este proyecto fue desarrollado utilizando las siguientes herramientas y tecnolog
 
 ---
 
+## 🏗️ Diseño POO: Diagrama de Clases
+
+Esta sección es crucial para entender la arquitectura de **Programación Orientada a Objetos (POO)** del sistema. El diagrama representa las clases principales del proyecto, sus atributos, métodos y las relaciones (asociación, composición, herencia) necesarias para cumplir con los requisitos funcionales de la ferretería.
+
+### Diagrama General del Sistema
+
+![Diagrama de Clases Ferretería](Diagramas/DiagramaClases.svg)
+
+---
+
+### 💡 Notas sobre el Diseño POO
+
+Los siguientes principios y estructuras POO se aplicaron en el diseño:
+
+* **Clases Centrales:** El diseño se centra en clases como **Producto**, **Cliente**, **Proveedor** y **Venta**. La clase `Venta` probablemente incluye una relación de **composición** con una clase de detalle (ej: `DetalleVenta`) para manejar los múltiples productos en una sola transacción.
+* **Encapsulamiento:** Todos los atributos de las clases tienen modificadores de acceso `private` y se exponen mediante métodos **getters y setters**.
+* **Herencia/Interfaces (Opcional):** Se podría haber utilizado **Herencia** para modelar diferentes tipos de productos (ej: `Herramienta`, `MaterialConstrucción`) o **Interfaces** para definir contratos de servicios (ej: `CRUDService`).
+* **Gestión de Inventario:** La clase `Producto` interactúa directamente con la lógica de inventario, reflejando el requisito de **actualización automática** de existencias tras una venta o compra.
+
 ## 📐 Diseño y Modelado: Diagramas de Caso de Uso
 
 Esta sección presenta los diagramas de Caso de Uso que modelan las interacciones principales de los usuarios (actores) con el Sistema de Gestión de Ferretería.
