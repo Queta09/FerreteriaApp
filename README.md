@@ -58,8 +58,6 @@ Base de datos para seguimiento y fidelización.
 * **Mantenimiento de Datos:** Permite editar y eliminar información del cliente.
 * **Consulta Individual:** Permite consultar el **historial de compras individuales**.
 
-// ... (Aquí termina el código de la sección "Requisitos Funcionales y Módulos Clave")
-
 ---
 
 ## 💻 Tecnologías Utilizadas
