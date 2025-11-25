@@ -57,3 +57,20 @@ Base de datos para seguimiento y fidelización.
 * **Registro Completo:** Registra nombre, dirección, contacto e **historial de compras**.
 * **Mantenimiento de Datos:** Permite editar y eliminar información del cliente.
 * **Consulta Individual:** Permite consultar el **historial de compras individuales**.
+
+// ... (Aquí termina el código de la sección "Requisitos Funcionales y Módulos Clave")
+
+---
+
+## 💻 Tecnologías Utilizadas
+
+Este proyecto fue desarrollado utilizando las siguientes herramientas y tecnologías:
+
+* **Lenguaje:** Java 25
+* **Gestor de Dependencias:** Apache Maven
+* **IDE:** IntelliJ IDEA (Community Edition)
+* **Base de Datos:** SQLite (para persistencia local)
+
+---
+
+
