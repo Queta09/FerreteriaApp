@@ -1,0 +1,5 @@
+module:com.ferreteria.ferreteriaapp
+com.ferreteria.ferreteriaapp
+com.ferreteria.ferreteriaapp.controller
+com.ferreteria.ferreteriaapp.model
+com.ferreteria.ferreteriaapp.services

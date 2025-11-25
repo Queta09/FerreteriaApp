@@ -1,0 +1,272 @@
+classDiagram
+%% ==========================================
+%% PAQUETE: MODELOS (Entidades de Datos)
+%% ==========================================
+    namespace Modelos {
+        class Persona {
+            <<Abstract>>
+            # int id
+            # String nombre
+            # String apellidoPaterno
+            # String apellidoMaterno
+            # String telefono
+            + getId() int
+            + setId(int id)
+            + getNombre() String
+            + setNombre(String nombre)
+            + getApellidoPaterno() String
+            + setApellidoPaterno(String ap)
+            + getApellidoMaterno() String
+            + setApellidoMaterno(String am)
+            + getTelefono() String
+            + setTelefono(String tel)
+            + getNombreCompleto() String
+        }
+
+        class Cliente {
+            - String correo
+            - String direccion
+            + getCorreo() String
+            + setCorreo(String correo)
+            + getDireccion() String
+            + setDireccion(String dir)
+            + toString() String
+        }
+
+        class Empleado {
+            - String puesto
+            - String usuario
+            - String password
+            - String rol
+            + getPuesto() String
+            + setPuesto(String puesto)
+            + getUsuario() String
+            + setUsuario(String user)
+            + getPassword() String
+            + setPassword(String pass)
+            + getRol() String
+            + setRol(String rol)
+        }
+
+        class Proveedor {
+            - String nombreEmpresa
+            - String rfc
+            - String direccion
+            - String correo
+            - String diasEntrega
+            + getNombreEmpresa() String
+            + setNombreEmpresa(String nom)
+            + getRfc() String
+            + setRfc(String rfc)
+            + getDiasEntrega() String
+            + setDiasEntrega(String dias)
+            + toString() String
+        }
+
+        class Producto {
+            - int id
+            - String codigo
+            - String nombre
+            - String categoria
+            - double precioCosto
+            - double precioVenta
+            - int stockActual
+            - int stockMinimo
+            - int idProveedor
+            - String nombreProveedor
+            + getId() int
+            + getCodigo() String
+            + getNombre() String
+            + getPrecioVenta() double
+            + getStockActual() int
+            + estaBajoDeStock() boolean
+            + toString() String
+        }
+
+        class Venta {
+            - int id
+            - LocalDateTime fecha
+            - double total
+            - double descuento
+            - double ganancia
+            - Cliente cliente
+            - Empleado empleado
+            - List~DetalleVenta~ detalles
+            + agregarDetalle(DetalleVenta dv)
+            + getTotalNeto() double
+            + getGanancia() double
+            + setGanancia(double g)
+            + getDescuento() double
+            + setDescuento(double d)
+        }
+
+        class DetalleVenta {
+            - int id
+            - int idVenta
+            - Producto producto
+            - int cantidad
+            - double precioUnitario
+            - double subtotal
+            + getProducto() Producto
+            + getCantidad() int
+            + setCantidad(int cant)
+            + getSubtotal() double
+        }
+    }
+
+%% RELACIONES DE HERENCIA Y COMPOSICIÓN EN MODELOS
+    Persona <|-- Cliente : Herencia
+    Persona <|-- Empleado : Herencia
+    Persona <|-- Proveedor : Herencia
+
+    Venta *-- "1..*" DetalleVenta : Composición
+    Venta --> "1" Cliente : Asociación
+    Venta --> "1" Empleado : Asociación
+    DetalleVenta --> "1" Producto : Asociación
+    Producto --> "1" Proveedor : Asociación (vía ID)
+
+%% ==========================================
+%% PAQUETE: SERVICIOS (Lógica de Negocio)
+%% ==========================================
+    namespace Servicios {
+        class IGestionable~T~ {
+            <<Interface>>
+            + agregar(T entidad)
+            + actualizar(T entidad)
+            + eliminar(int id)
+            + obtenerTodos() List~T~
+            + obtenerPorId(int id) T
+        }
+
+        class DatabaseConnection {
+            - static String URL
+            + static getConnection() Connection
+        }
+
+        class ClienteManager {
+            - Connection connection
+            - crearTablaSiNoExiste()
+            + agregar(Cliente c)
+            + actualizar(Cliente c)
+            + eliminar(int id)
+            + obtenerTodos() List~Cliente~
+        }
+
+        class EmpleadoManager {
+            - Connection connection
+            + agregar(Empleado e)
+            + actualizar(Empleado e)
+            + eliminar(int id)
+            + obtenerTodos() List~Empleado~
+        }
+
+        class ProveedorManager {
+            - Connection connection
+            + agregar(Proveedor p)
+            + actualizar(Proveedor p)
+            + eliminar(int id)
+            + obtenerTodos() List~Proveedor~
+        }
+
+        class InventarioManager {
+            - Connection connection
+            + agregar(Producto p)
+            + actualizar(Producto p)
+            + eliminar(int id)
+            + obtenerTodos() List~Producto~
+            + obtenerProductosBajosDeStock() List~Producto~
+        }
+
+        class VentaManager {
+            - Connection connection
+            - crearTablasSiNoExisten()
+            + registrarVenta(Venta venta) int
+        }
+
+        class ReporteManager {
+            - Connection connection
+            + obtenerVentasPorFiltro(LocalDate ini, LocalDate fin, int idEmp) List~Venta~
+        }
+
+        class AuthService {
+            - Connection connection
+            + login(String usuario, String password) Empleado
+        }
+
+        class TicketManager {
+            + generarTicketPDF(Venta venta)
+        }
+    }
+
+%% RELACIONES DE IMPLEMENTACIÓN DE INTERFAZ
+    IGestionable <|.. ClienteManager : Implementa
+    IGestionable <|.. EmpleadoManager : Implementa
+    IGestionable <|.. ProveedorManager : Implementa
+    IGestionable <|.. InventarioManager : Implementa
+
+%% DEPENDENCIAS DE SERVICIOS
+    ClienteManager ..> DatabaseConnection : Usa
+    EmpleadoManager ..> DatabaseConnection : Usa
+    InventarioManager ..> DatabaseConnection : Usa
+    VentaManager ..> DatabaseConnection : Usa
+    VentaManager ..> Producto : Actualiza Stock
+    TicketManager ..> Venta : Genera PDF de
+
+%% ==========================================
+%% PAQUETE: CONTROLADORES (Vistas)
+%% ==========================================
+    namespace Controladores {
+        class LoginController {
+            - AuthService authService
+            - txtUsuario TextField
+            - txtPassword PasswordField
+            + onLoginButtonClick()
+        }
+
+        class MainController {
+            - Empleado empleadoActual
+            + setEmpleado(Empleado e)
+            + mostrarVentas()
+            + mostrarReportes()
+            + mostrarEmpleados()
+        }
+
+        class SalesController {
+            - Empleado empleadoActual
+            - VentaManager ventaManager
+            - TicketManager ticketManager
+            - ObservableList~DetalleVenta~ carrito
+            + setEmpleado(Empleado e)
+            + agregarProducto()
+            + finalizarVenta()
+            + calcularTotal()
+        }
+
+        class ReportsController {
+            - ReporteManager reporteManager
+            - Empleado empleadoActual
+            + setEmpleado(Empleado e)
+            + generarReporte()
+        }
+
+        class EmployeesController {
+            - EmpleadoManager manager
+            + guardar()
+            + eliminar()
+        }
+
+        class InventoryController {
+            - InventarioManager manager
+            + guardarProducto()
+        }
+    }
+
+%% RELACIONES ENTRE CONTROLADORES Y SERVICIOS
+    LoginController --> AuthService : Usa
+    MainController --> LoginController : Regresa a
+    SalesController --> VentaManager : Usa
+    SalesController --> TicketManager : Usa
+    SalesController --> InventarioManager : Usa
+    ReportsController --> ReporteManager : Usa
+    EmployeesController --> EmpleadoManager : Usa
+    InventoryController --> InventarioManager : Usa
