@@ -73,4 +73,19 @@ Este proyecto fue desarrollado utilizando las siguientes herramientas y tecnolog
 
 ---
 
+## 📐 Diseño y Modelado: Diagramas de Caso de Uso
+
+Esta sección presenta los diagramas de Caso de Uso que modelan las interacciones principales de los usuarios (actores) con el Sistema de Gestión de Ferretería.
+
+### 1. Diagrama de Caso de Uso Principal (D1)
+
+Este diagrama modela las **funciones de gestión clave** del sistema, incluyendo la administración de productos, transacciones y acceso al sistema.
+
+![Diagrama de Caso de Uso Principal](D1.jpg)
+
+### 2. Diagrama de Caso de Uso de Operaciones Comerciales (D2)
+
+Este diagrama se enfoca en las **operaciones transaccionales y de registro**, como la gestión de ventas, compras y la interacción con clientes y proveedores.
+
+![Diagrama de Caso de Uso Secundario](D2.jpg)
 
